@@ -4,7 +4,7 @@ CPPFLAGS = $(OPT_FLAGS) -I. -std=c++11 -I../ext/GVal
 
 TARGETS = GValTest 
 
-GVAL_TEST_OBJS=GValOperationsTest.o GValOperations.o \
+GVAL_OPERATIONS_TEST_OBJS=GValOperationsTest.o GValOperations.o \
  ../ext/GVal/GVal.o ../ext/GVal/ProgressReporter.o \
  ../ext/GVal/GValUtils.o ../ext/GVal/Sutf.o ../ext/GVal/GValParser.o \
  ../ext/GVal/toString.o ../ext/GVal/MultiArrayIterator.o \
@@ -15,8 +15,8 @@ GVAL_TEST_OBJS=GValOperationsTest.o GValOperations.o \
 
 all: $(TARGETS)
 
-GValTest: $(GVAL_TEST_OBJS)
-	g++ -o GValTest $(GVAL_TEST_OBJS)
+GValTest: $(GVAL_OPERATIONS_TEST_OBJS)
+	g++ -o GValTest $(GVAL_OPERATIONS_TEST_OBJS)
 
 %.o: %.cpp
 	g++ -c $(CPPFLAGS) $< -o $@
