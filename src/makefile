@@ -1,22 +1,22 @@
 OPT_FLAGS = -g
 
-CPPFLAGS = $(OPT_FLAGS) -I. -std=c++11 -I../ext/GVal
+CPPFLAGS = $(OPT_FLAGS) -I. -std=c++11 -I../../GVal
 
-TARGETS = GValTest 
+TARGETS = GValOperationsTest
 
 GVAL_OPERATIONS_TEST_OBJS=GValOperationsTest.o GValOperations.o \
- ../ext/GVal/GVal.o ../ext/GVal/ProgressReporter.o \
- ../ext/GVal/GValUtils.o ../ext/GVal/Sutf.o ../ext/GVal/GValParser.o \
- ../ext/GVal/toString.o ../ext/GVal/MultiArrayIterator.o \
- ../ext/GVal/MultiArraySlice.o \
- ../ext/GVal/GValFormatter.o ../ext/GVal/FileStream.o \
- ../ext/GVal/BinaryStream.o ../ext/GVal/MemoryStream.o \
- ../ext/GVal/GValSerializer.o
+ ../../GVal/GVal.o ../../GVal/ProgressReporter.o \
+ ../../GVal/GValUtils.o ../../GVal/Sutf.o ../../GVal/GValParser.o \
+ ../../GVal/toString.o ../../GVal/MultiArrayIterator.o \
+ ../../GVal/MultiArraySlice.o \
+ ../../GVal/GValFormatter.o ../../GVal/FileStream.o \
+ ../../GVal/BinaryStream.o ../../GVal/MemoryStream.o \
+ ../../GVal/GValSerializer.o
 
 all: $(TARGETS)
 
-GValTest: $(GVAL_OPERATIONS_TEST_OBJS)
-	g++ -o GValTest $(GVAL_OPERATIONS_TEST_OBJS)
+GValOperationsTest: $(GVAL_OPERATIONS_TEST_OBJS)
+	g++ -o GValOperationsTest $(GVAL_OPERATIONS_TEST_OBJS)
 
 %.o: %.cpp
 	g++ -c $(CPPFLAGS) $< -o $@
