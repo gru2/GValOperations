@@ -13,8 +13,6 @@ set(SOURCES GValOperations.cpp)
 
 set(HEADER_FILES GValOperations.h)
 
-ADD_SUBDIRECTORY(src)
-
 INCLUDE_DIRECTORIES(.)
 
 ADD_LIBRARY(GValOperations STATIC ${SOURCES} ${HEADER_FILES})
