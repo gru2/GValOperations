@@ -1,20 +1,22 @@
-PROJECT(GValOperations)
-cmake_minimum_required(VERSION 2.8)
+set(WORK_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../..)
 
-SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
-SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_CURRENT_SOURCE_DIR}/bin)
-SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_CURRENT_SOURCE_DIR}/bin)
-
-SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
-SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY})
-SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY})
+link_directories(${WORK_DIR}/GVal/build)
 
 set(SOURCES GValOperations.cpp)
 
 set(HEADER_FILES GValOperations.h)
 
-INCLUDE_DIRECTORIES(.)
+INCLUDE_DIRECTORIES(. ${WORK_DIR}/GVal)
 
-ADD_LIBRARY(GValOperations STATIC ${SOURCES} ${HEADER_FILES})
-ADD_EXECUTABLE(GValOperationsTest GValOperationsTest.cpp ${HEADER_FILES})
-TARGET_LINK_LIBRARIES(GValOperationsTest GValOperations ${CONAN_LIBS})
+if(CMAKE_BUILD_TYPE STREQUAL "Release")
+    message("Release mode.")
+    add_library(GValOperations STATIC ${SOURCES} ${HEADER_FILES})
+    add_executable(GValOperationsTest GValOperationsTest.cpp ${HEADER_FILES})
+    target_link_libraries(GValOperationsTest GValOperations GVal)
+endif(CMAKE_BUILD_TYPE STREQUAL "Release")
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    message("Debug mode.")
+    add_library(GValOperationsd STATIC ${SOURCES} ${HEADER_FILES})
+    add_executable(GValOperationsTestd GValOperationsTest.cpp ${HEADER_FILES})
+    target_link_libraries(GValOperationsTestd GValOperationsd GVald)
+endif(CMAKE_BUILD_TYPE STREQUAL "Debug")
