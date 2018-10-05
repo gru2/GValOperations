@@ -1,62 +1,62 @@
-#include <Sutf.h>
+#include <Usutf.h>
 #include <GValOperations.h>
 
-SUTF_TEST(testAdd)
+USUTF_TEST(testAdd)
 {
 	GVal r = add(GVal(4), GVal(3));
-	Sutf::test(r.asInt() == 7);
+	Usutf::test(r.asInt() == 7);
 }
 
-SUTF_TEST(testSub)
+USUTF_TEST(testSub)
 {
 	GVal r = sub(GVal(4), GVal(3));
-	Sutf::test(r.asInt() == 1);
+	Usutf::test(r.asInt() == 1);
 }
 
-SUTF_TEST(testUNeg)
+USUTF_TEST(testUNeg)
 {
 	GVal r = uneg(GVal(4));
-	Sutf::test(r.asInt() == -4);
+	Usutf::test(r.asInt() == -4);
 }
 
-SUTF_TEST(testMul)
+USUTF_TEST(testMul)
 {
 	GVal r = mul(GVal(4), GVal(3));
-	Sutf::test(r.asInt() == 12);
+	Usutf::test(r.asInt() == 12);
 }
 
-SUTF_TEST(testDiv)
+USUTF_TEST(testDiv)
 {
 	GVal r = div(GVal(16), GVal(3));
-	Sutf::test(r.asInt() == 5);
+	Usutf::test(r.asInt() == 5);
 }
 
-SUTF_TEST(testMod)
+USUTF_TEST(testMod)
 {
 	GVal r = mod(GVal(16), GVal(3));
-	Sutf::test(r.asInt() == 1);
+	Usutf::test(r.asInt() == 1);
 }
 
-SUTF_TEST(testEq)
+USUTF_TEST(testEq)
 {
 	GVal r = eq(GVal(16), GVal(3));
-	Sutf::test(r.asBool() == false);
+	Usutf::test(r.asBool() == false);
 }
 
-SUTF_TEST(testUNot)
+USUTF_TEST(testUNot)
 {
 	GVal r = unot(GVal(true));
-	Sutf::test(r.asBool() == false);
+	Usutf::test(r.asBool() == false);
 }
 
-SUTF_TEST(testLt)
+USUTF_TEST(testLt)
 {
 	GVal r = lt(GVal(16), GVal(3));
-	Sutf::test(r.asBool() == false);
+	Usutf::test(r.asBool() == false);
 }
 
 int main(int argc, char *argv[])
 {
-	Sutf::runTests(argc, argv);
+	Usutf::runTests(argc, argv);
 	return 0;
 }
